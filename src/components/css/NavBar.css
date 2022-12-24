@@ -1,0 +1,33 @@
+.navbar{
+    
+}
+
+.logo{
+    float: left;
+	padding: 15px 0 0 20px;
+    width: 10rem;
+    height: 10rem;  
+}
+
+.logo-liga{
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+}
+
+.categorias{
+    margin-left: 1rem;
+}
+
+.item-categoria{
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-end ;
+    font-weight: bold !important;
+    text-align: center;
+    font-size: large;
+}
+
+.carrito{
+    justify-content: end;
+}
