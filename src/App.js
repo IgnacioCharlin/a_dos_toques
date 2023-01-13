@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import './App.css';
+import ItemCount from './components/ItemCount';
 import ItemListContainer from './components/ItemListContainer';
 import NavBar from './components/NavBar';
 
@@ -14,6 +15,7 @@ function App() {
       <main>
         <Container>
           <ItemListContainer greeting={nombre} />
+          <ItemCount />
         </Container>
       </main>
     </div>
