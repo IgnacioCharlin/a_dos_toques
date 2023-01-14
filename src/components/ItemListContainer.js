@@ -4,13 +4,15 @@ import data from "./assert/data.json";
 import { Spinner } from "react-bootstrap";
 import "./css/ItemListContainer.css";
 import { useParams } from "react-router-dom";
+import arsenal from "././assert/remeras/arsenal.jpg";
+import chelsea from "././assert/remeras/chelsea.jpg";
 
 const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [productByCategory, setProductByCategory] = useState([]);
   const { categoryId } = useParams();
-
+  
   const getProductos = new Promise((res, rej) => {
     setTimeout(() => {
       res(data);
@@ -24,13 +26,13 @@ const ItemListContainer = ({ greeting }) => {
         return setProducts(response);
       })
       .catch((error) => console.log(error));
-  },[]);
+  }, []);
 
   useEffect(() => {
-    console.log(categoryId)
+    console.log(categoryId);
     console.log(products);
-    if(categoryId !== undefined){
-      setProductByCategory(products.filter((p) => p.category == categoryId))
+    if (categoryId !== undefined) {
+      setProductByCategory(products.filter((p) => p.category == categoryId));
     }
   }, [categoryId]);
 
@@ -42,7 +44,11 @@ const ItemListContainer = ({ greeting }) => {
       {loading?<ItemList products={products} />:<Spinner color="light" />}
   </h3>*/}
 
-      {loading?<ItemList products={categoryId ? productByCategory : products} />:<Spinner color="light" />}
+      {loading ? (
+        <ItemList products={categoryId ? productByCategory : products} />
+      ) : (
+        <Spinner color="light" />
+      )}
     </>
   );
 };

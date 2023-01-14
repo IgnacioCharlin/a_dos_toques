@@ -9,6 +9,7 @@ import "./css/NavBar.css";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
 
+
 const NavBar = () => {
   return (
     <>
@@ -74,6 +75,7 @@ const NavBar = () => {
           <Navbar.Collapse className="carrito">
             <CartWidget />
           </Navbar.Collapse>
+
         </Container>
       </Navbar>
     </>
@@ -81,3 +83,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

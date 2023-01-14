@@ -14,7 +14,7 @@ const ItemDetail = ({ product }) => {
         </Button>
       </Link>
       <Card.Img
-        className="imagen-productos"
+        className="imagen-productos mt-4 d-flex justify-content-center"
         variant="top"
         src={product.pictureUrl}
       />
