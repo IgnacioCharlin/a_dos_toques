@@ -5,6 +5,7 @@
     width: 10rem ;
     justify-content: space-between;
     padding: 2px;
+    margin-bottom: 1rem;
 }
 
 .numero{
@@ -15,6 +16,13 @@
 
 .boton{
     border-radius: 50px !important;
+}
+
+.agregar{
+    margin: 0;
+    font-weight: 500;
+    font-size: medium;
+    width: 10rem;
 }
 
 
