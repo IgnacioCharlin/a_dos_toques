@@ -1,0 +1,7 @@
+.salir{
+    width: 10%;
+    position: absolute;
+    left: 90%;
+    display: flex !important;
+    justify-content: center;
+}

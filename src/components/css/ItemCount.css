@@ -1,0 +1,28 @@
+.contador{
+    display: flex;
+    align-items: baseline;
+    text-align: center;
+    width: 10rem ;
+    justify-content: space-between;
+    padding: 2px;
+    margin-bottom: 1rem;
+}
+
+.numero{
+    margin: 0;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.boton{
+    border-radius: 50px !important;
+}
+
+.agregar{
+    margin: 0;
+    font-weight: 500;
+    font-size: medium;
+    width: 10rem;
+}
+
+

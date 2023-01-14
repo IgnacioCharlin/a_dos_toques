@@ -1,0 +1,9 @@
+.card {
+    margin: 10px ;
+    box-shadow: 4px 2px 12px rgba(0, 0, 0, 0.253);
+}
+
+.card-img-top{
+    height: 16rem !important;
+    width: auto !important
+}
