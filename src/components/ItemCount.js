@@ -3,7 +3,8 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import "./css/ItemCount.css";
-const ItemCount = () => {
+
+const ItemCount = ({onAdd}) => {
   const [count, setCount] = useState(0);
 
   return (
@@ -32,7 +33,7 @@ const ItemCount = () => {
       <div className="mb-4">
         <Button
           className="boton"
-          onClick={() => console.log(count)}
+          onClick={() => onAdd(count)}
           variant="outline-dark"
           size="sm"
         >

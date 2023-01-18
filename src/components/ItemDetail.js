@@ -4,8 +4,19 @@ import "./css/ItemDetail.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const ItemDetail = ({ product }) => {
+
+  const [count, setCount] = useState(0);
+
+  const [datos, estableceDatos] = useState('');
+
+  const onAdd = (contador) => {
+    console.log(contador);
+    setCount(contador);
+  }
+
   return (
     <Card className="text-center" border="light" style={{ width: "18rem" }}>
       <Link to="/">
@@ -21,7 +32,7 @@ const ItemDetail = ({ product }) => {
       <Card.Body className="text-center ">
         <Card.Title>{product.title}</Card.Title>
         <Card.Text>{product.description}</Card.Text>
-        <ItemCount />
+        <ItemCount onAdd={onAdd}/>
       </Card.Body>
     </Card>
   );
