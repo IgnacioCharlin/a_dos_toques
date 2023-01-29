@@ -4,18 +4,13 @@ import "./css/ItemDetail.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState , useContext} from "react";
+import { CartContext } from "../context/CartContext";
 
 const ItemDetail = ({ product }) => {
-
+  const {addItem} = useContext(CartContext);
   const [count, setCount] = useState(0);
 
-  const [datos, estableceDatos] = useState('');
-
-  const onAdd = (contador) => {
-    console.log(contador);
-    setCount(contador);
-  }
 
   return (
     <Card className="text-center" border="light" style={{ width: "18rem" }}>
@@ -32,7 +27,18 @@ const ItemDetail = ({ product }) => {
       <Card.Body className="text-center ">
         <Card.Title>{product.title}</Card.Title>
         <Card.Text>{product.description}</Card.Text>
-        <ItemCount onAdd={onAdd}/>
+        <ItemCount cantidad={count} actualizarCantidad = {setCount} />
+
+        <div className="mb-4">
+        <Button
+          onClick={() => addItem(product,count)}
+          className="boton"
+          variant="outline-dark"
+          size="sm"
+        >
+          <p className="agregar">Agregar</p>
+        </Button>
+      </div>
       </Card.Body>
     </Card>
   );
