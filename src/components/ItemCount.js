@@ -1,10 +1,19 @@
-import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import "./css/ItemCount.css";
-const ItemCount = () => {
-  const [count, setCount] = useState(0);
+
+const ItemCount = ({cantidad , actualizarCantidad}) => {
+
+  const increment = () => {
+    actualizarCantidad(cantidad + 1);
+  }
+
+  const decrement = () => {
+    if(cantidad > 0){
+      actualizarCantidad(cantidad - 1);
+    }
+  }
 
   return (
     <div className="d-flex flex-column align-items-center">
@@ -13,30 +22,18 @@ const ItemCount = () => {
           className="boton"
           size="sm"
           variant="outline-dark"
-          onClick={() => {
-            if (count > 0) setCount(count - 1);
-          }}
+          onClick={decrement}
         >
           <FontAwesomeIcon className="icono" icon={faMinus} />
         </Button>
-        <p className="numero">{count}</p>
+        <p className="numero">{cantidad}</p>
         <Button
           className="boton"
-          onClick={() => setCount(count + 1)}
+          onClick={increment}
           variant="outline-dark"
           size="sm"
         >
           <FontAwesomeIcon className="icono" icon={faPlus} />
-        </Button>
-      </div>
-      <div className="mb-4">
-        <Button
-          className="boton"
-          onClick={() => console.log(count)}
-          variant="outline-dark"
-          size="sm"
-        >
-          <p className="agregar">Agregar</p>
         </Button>
       </div>
     </div>

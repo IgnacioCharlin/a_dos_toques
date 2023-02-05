@@ -26,4 +26,6 @@
 
 .carrito{
     justify-content: end;
+    display: flex;
+    width: 50%;
 }

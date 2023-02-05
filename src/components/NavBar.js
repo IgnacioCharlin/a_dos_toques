@@ -1,4 +1,4 @@
-import { Nav, NavDropdown, Navbar, Container, NavLink } from "react-bootstrap";
+import { Nav, NavDropdown, Navbar, Container, NavLink, Button } from "react-bootstrap";
 import logo from "./assert/aDosToques.png";
 import premier from "./assert/premier.png";
 import laLiga from "./assert/laliga.jpg";
@@ -8,7 +8,6 @@ import mundo from "./assert/mundo.png";
 import "./css/NavBar.css";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
-
 
 const NavBar = () => {
   return (
@@ -73,9 +72,10 @@ const NavBar = () => {
             </NavDropdown>
           </Nav>
           <Navbar.Collapse className="carrito">
-            <CartWidget />
+            <Link to="/cart">
+              <CartWidget />
+            </Link>
           </Navbar.Collapse>
-
         </Container>
       </Navbar>
     </>
@@ -83,4 +83,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

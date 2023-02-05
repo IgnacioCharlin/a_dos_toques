@@ -1,39 +1,65 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
-import data from "./assert/data.json";
 import { Spinner } from "react-bootstrap";
 import "./css/ItemListContainer.css";
 import { useParams } from "react-router-dom";
-import arsenal from "././assert/remeras/arsenal.jpg";
-import chelsea from "././assert/remeras/chelsea.jpg";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 
 const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [productByCategory, setProductByCategory] = useState([]);
   const { categoryId } = useParams();
-  
-  const getProductos = new Promise((res, rej) => {
-    setTimeout(() => {
-      res(data);
-    }, 2000);
-  });
+
+  const getProducts = () => {
+    const db = getFirestore();
+    const querySnapshot = collection(db, "products");
+
+    if (categoryId) {
+      const newConfiguration = query(
+        querySnapshot,
+        where("categoryId", "==", parseInt(categoryId))
+      );
+
+      getDocs(newConfiguration)
+        .then((response) => {
+          const data = response.docs.map((doc) => {
+            return {
+              id: doc.id,
+              ...doc.data(),
+            };
+          });
+          setLoading(true);
+          setProducts(data);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      getDocs(querySnapshot)
+        .then((response) => {
+          const data = response.docs.map((doc) => {
+            return {
+              id: doc.id,
+              ...doc.data(),
+            };
+          });
+          setLoading(true);
+          setProducts(data);
+        })
+        .catch((error) => console.log(error));
+    }
+  };
 
   useEffect(() => {
-    getProductos
-      .then((response) => {
-        setLoading(true);
-        return setProducts(response);
-      })
-      .catch((error) => console.log(error));
+    getProducts();
   }, []);
 
   useEffect(() => {
-    console.log(categoryId);
-    console.log(products);
-    if (categoryId !== undefined) {
-      setProductByCategory(products.filter((p) => p.category == categoryId));
-    }
+    getProducts();
   }, [categoryId]);
 
   return (
@@ -44,11 +70,7 @@ const ItemListContainer = ({ greeting }) => {
       {loading?<ItemList products={products} />:<Spinner color="light" />}
   </h3>*/}
 
-      {loading ? (
-        <ItemList products={categoryId ? productByCategory : products} />
-      ) : (
-        <Spinner color="light" />
-      )}
+      {loading ? <ItemList products={products} /> : <Spinner color="light" />}
     </>
   );
 };
