@@ -8,7 +8,7 @@ const Item = ({ product }) => {
       <Card.Img
         className="imagen-productos"
         variant="top"
-        src={product.pictureUrl}
+        src={`/remeras/${product.imageId}`}
       />
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>

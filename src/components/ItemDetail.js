@@ -22,11 +22,13 @@ const ItemDetail = ({ product }) => {
       <Card.Img
         className="imagen-productos mt-4 d-flex justify-content-center"
         variant="top"
-        src={product.pictureUrl}
+        src={`/remeras/${product.imageId}`}
       />
       <Card.Body className="text-center ">
         <Card.Title>{product.title}</Card.Title>
         <Card.Text>{product.description}</Card.Text>
+        <Card.Text>Stock Disponible : {product.stock}</Card.Text>
+        <Card.Text className="precio">$ {product.price}</Card.Text>
         <ItemCount cantidad={count} actualizarCantidad = {setCount} />
 
         <div className="mb-4">

@@ -2,3 +2,15 @@
     font-weight: bolder;
     vertical-align: middle !important;
 }
+.imagen-carrito{
+    margin-right: 1rem !important;
+    width: 6rem;
+    height: 6rem;
+}
+
+.producto-carrito{
+    width: 65%;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}

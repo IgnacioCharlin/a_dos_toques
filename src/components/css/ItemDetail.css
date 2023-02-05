@@ -5,3 +5,8 @@
     display: flex !important;
     justify-content: center;
 }
+
+.precio{
+    font-weight: bolder;
+    font-size: larger;
+}
